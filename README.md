@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is an empirical analysis of zero-shot object detection models for food segmentation, benchmarked on the FoodSeg103 dataset.
+This project is an empirical analysis of zero-shot object detection models for food segmentation, benchmarked on the FoodSeg103 dataset. We discovered that a Top-K approach outperforms traditional threshold-based methods, as it reduces reliance on confidence scores by assigning each pixel to the most common class label among the top K detections. This method improves performance significantly up to K values in the 20s and 30s, making the exact choice of K less critical. Our experiments also revealed that different models behave differently under various thresholds, with OWLv2 emerging as the best performer for zero-shot food segmentation tasks.
 
 ## Table of Contents
 
@@ -19,10 +19,7 @@ This project is an empirical analysis of zero-shot object detection models for f
     - [Metrics Calculation](#metrics-calculation)
     - [Data Visualization](#data-visualization)
 10. [Results](#results)
-11. [Contributing](#contributing)
-12. [License](#license)
-13. [References](#references)
-14. [Contact](#contact)
+11. [References](#references)
 
 ## Introduction
 
@@ -189,7 +186,143 @@ python data_visualization.py
 
 ## Results
 
-[Include your results here, such as tables, charts, or example images demonstrating the performance of your method.]
+In this section, we present the performance of our proposed method using various models and parameters. The evaluation metrics used are Mean Intersection over Union (mIoU), Mean Accuracy (mACC), and overall pixel accuracy (aAcc). The results are visualized in several plots to illustrate the trends and conclusions drawn from our experiments.
+
+### 1. Performance Comparison Across Models
+
+#### Mean Intersection over Union (mIoU) by Model
+
+We evaluated several models, including OWLv2 Base, OWLv2 Large, OWL-ViT Base, OWL-ViT Large, and OmDet. The mIoU scores for each model are presented in the figure below.
+
+![mIoU by Model](data/graphs/All_Models_mIoU.svg)
+
+**Observations:**
+
+- **OWLv2 Base** and **OWLv2 Large** significantly outperformed the other models, achieving mIoU values up to **40%**.
+- **OWL-ViT Base** and **OWL-ViT Large** showed lower performance, with mIoU values mostly below **20%**.
+- **OmDet** exhibited moderate performance, with mIoU values around **15%**.
+- These results highlight the effectiveness of OWLv2 models in handling food segmentation tasks.
+
+---
+
+### 2. Effect of Thresholding on Model Performance
+
+#### mIoU by Model with Thresholding
+
+We analyzed the impact of applying different confidence thresholds on the models.
+
+![mIoU by Model (Threshold)](data/graphs/All_Models_Threshold_Metrics.png)
+
+**Observations:**
+
+- **OWLv2 Base** and **OWLv2 Large** achieved the highest mIoU values (~**35%**) when using threshold-based filtering.
+- **OWL-ViT Base** and **OWL-ViT Large** performed poorly under thresholding, with mIoU values below **10%**.
+- **OmDet** had moderate performance, with mIoU around **15%**.
+- Thresholding improved the performance of OWLv2 models, confirming their robustness under confidence-based filtering.
+
+---
+
+### 3. Effect of Top-K Selection on Model Performance
+
+#### mIoU by Model with Top-K Selection
+
+We evaluated the models using Top-K selection, where only the top K detections are considered.
+
+![mIoU by Model (Top-K)](data/graphs/All_Models_Top-K_Metrics.png)
+
+**Observations:**
+
+- **OWLv2 Base** and **OWLv2 Large** maintained high performance, with mIoU values peaking above **25%**.
+- **OWL-ViT Base** and **OWL-ViT Large** remained significantly lower, with mIoU values below **20%**.
+- **OmDet** showed moderate results but was outperformed by OWLv2 models.
+- The Top-K approach reinforced the robustness and adaptability of OWLv2 models.
+
+---
+
+### 4. Impact of Non-Maximum Suppression (NMS) on OmDet
+
+#### OmDet NMS Metrics
+
+We analyzed how varying the NMS threshold affects the performance of the OmDet model.
+
+![OmDet NMS Metrics](data/graphs/OmDet_Nms_Metrics.png)
+
+**Observations:**
+
+- Increasing the NMS threshold from **0.1** to **0.4** improved mIoU, mACC, and aAcc, with **mACC** showing the largest gain.
+- Beyond an NMS threshold of **0.4**, performance gains plateaued, indicating diminishing returns.
+- Optimizing the NMS threshold is beneficial for OmDet, but the effect levels off after a certain point.
+
+---
+
+### 5. OWLv2 Base Model: Top-K Analysis
+
+#### OWLv2 Base Top-K Metrics
+
+We explored how varying the Top-K parameter affects the OWLv2 Base model's performance.
+
+![OWLv2 Base Top-K Metrics](data/graphs/OWLv2_Base_Top-K_Metrics.png)
+
+**Observations:**
+
+- Increasing **K** improved mIoU and mACC, with gains leveling off beyond **K=30**.
+- Overall pixel accuracy (aAcc) remained relatively stable across different K values.
+- The optimal performance for OWLv2 Base is achieved at higher K values, indicating the effectiveness of considering more detections.
+
+---
+
+### 6. Polygon Refinement in OWLv2 Large Model
+
+#### OWLv2 Large Polygon Refinement Metrics
+
+We assessed the impact of polygon refinement on the OWLv2 Large model.
+
+![OWLv2 Large Poly Metrics](data/graphs/OWLv2_Large_Poly_Metrics.png)
+
+**Observations:**
+
+- Polygon refinement provided marginal changes.
+- Performance declined significantly beyond a threshold of **0.4**, emphasizing the importance of appropriate threshold selection.
+
+---
+
+### 7. Threshold Sensitivity in OWLv2 Large Model
+
+#### OWLv2 Large Threshold Metrics
+
+We investigated how different confidence thresholds affect the OWLv2 Large model.
+
+![OWLv2 Large Threshold Metrics](data/graphs/OWLv2_Large_Threshold_Metrics.png)
+
+**Observations:**
+
+- mIoU and mACC peaked within the **0.2–0.4** threshold range and dropped sharply beyond **0.5**.
+- Overall pixel accuracy (aAcc) showed minimal variation, indicating stable pixel-level performance.
+- Selecting an optimal threshold is crucial for maximizing the OWLv2 Large model's performance.
+
+---
+
+### 8. OWLv2 Large Model: Top-K Analysis
+
+#### OWLv2 Large Top-K Metrics
+
+We analyzed the effect of varying the Top-K parameter on the OWLv2 Large model.
+
+![OWLv2 Large Top-K Metrics](data/graphs/OWLv2_Large_Top-K_Metrics.png)
+
+**Observations:**
+
+- mIoU and mACC improved steadily as **K** increased, peaking around **K=30**, beyond which gains plateaued.
+- aAcc showed a slight decline with higher K values, possibly due to including less accurate detections.
+- Balancing the Top-K value is essential to achieve optimal performance without compromising accuracy.
+
+---
+
+### Overall Conclusions
+
+- **OWLv2 Models**: Both Base and Large versions consistently outperformed other models in food segmentation tasks, demonstrating their robustness and effectiveness.
+- **Threshold and Top-K Tuning**: Careful selection of confidence thresholds and Top-K values is crucial for optimizing model performance. In most scenarios, Top-K out performs thresholds.
+- **Model Recommendation**: OWLv2 models are recommended for zero-shot food segmentation tasks due to their superior performance.
 
 
 ## References
