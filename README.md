@@ -211,7 +211,7 @@ We evaluated several models, including OWLv2 Base, OWLv2 Large, OWL-ViT Base, OW
 
 We analyzed the impact of applying different confidence thresholds on the models.
 
-![mIoU by Model (Threshold)](data/graphs/All_Models_Threshold_Metrics.png)
+![mIoU by Model (Threshold)](data/graphs/All_Models_Threshold_Metrics.svg)
 
 **Observations:**
 
@@ -228,7 +228,7 @@ We analyzed the impact of applying different confidence thresholds on the models
 
 We evaluated the models using Top-K selection, where only the top K detections are considered.
 
-![mIoU by Model (Top-K)](data/graphs/All_Models_Top-K_Metrics.png)
+![mIoU by Model (Top-K)](data/graphs/All_Models_Top-K_Metrics.svg)
 
 **Observations:**
 
@@ -245,7 +245,7 @@ We evaluated the models using Top-K selection, where only the top K detections a
 
 We analyzed how varying the NMS threshold affects the performance of the OmDet model.
 
-![OmDet NMS Metrics](data/graphs/OmDet_Nms_Metrics.png)
+![OmDet NMS Metrics](data/graphs/OmDet_Nms_Metrics.svg)
 
 **Observations:**
 
@@ -261,7 +261,7 @@ We analyzed how varying the NMS threshold affects the performance of the OmDet m
 
 We explored how varying the Top-K parameter affects the OWLv2 Base model's performance.
 
-![OWLv2 Base Top-K Metrics](data/graphs/OWLv2_Base_Top-K_Metrics.png)
+![OWLv2 Base Top-K Metrics](data/graphs/OWLv2_Base_Top-K_Metrics.svg)
 
 **Observations:**
 
@@ -277,7 +277,7 @@ We explored how varying the Top-K parameter affects the OWLv2 Base model's perfo
 
 We assessed the impact of polygon refinement on the OWLv2 Large model.
 
-![OWLv2 Large Poly Metrics](data/graphs/OWLv2_Large_Poly_Metrics.png)
+![OWLv2 Large Poly Metrics](data/graphs/OWLv2_Large_Poly_Metrics.svg)
 
 **Observations:**
 
@@ -292,7 +292,7 @@ We assessed the impact of polygon refinement on the OWLv2 Large model.
 
 We investigated how different confidence thresholds affect the OWLv2 Large model.
 
-![OWLv2 Large Threshold Metrics](data/graphs/OWLv2_Large_Threshold_Metrics.png)
+![OWLv2 Large Threshold Metrics](data/graphs/OWLv2_Large_Threshold_Metrics.svg)
 
 **Observations:**
 
@@ -308,7 +308,7 @@ We investigated how different confidence thresholds affect the OWLv2 Large model
 
 We analyzed the effect of varying the Top-K parameter on the OWLv2 Large model.
 
-![OWLv2 Large Top-K Metrics](data/graphs/OWLv2_Large_Top-K_Metrics.png)
+![OWLv2 Large Top-K Metrics](data/graphs/OWLv2_Large_Top-K_Metrics.svg)
 
 **Observations:**
 
