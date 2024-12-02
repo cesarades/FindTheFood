@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type=str, default='FoodSeg103', help='dataset')
 args = parser.parse_args()
 dataset = args.dataset
-form = 'png'
+form = 'svg'
 
 if not os.path.exists(f'data/{dataset}/Images/inf_dir/stored_metrics.csv'):
     raise ValueError(f"File not found: data/{dataset}/Images/inf_dir/stored_metrics.csv")
