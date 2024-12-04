@@ -1,4 +1,4 @@
-name: dino
+name: findthefood
 channels:
   - conda-forge
 dependencies:
