@@ -7,65 +7,23 @@ This project is an empirical analysis of zero-shot object detection models for f
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Key Features](#key-features)
-3. [Methodology](#methodology)
-4. [Models Evaluated](#models-evaluated)
-5. [Metrics](#metrics)
-6. [Requirements](#requirements)
-7. [Installation](#installation)
-8. [Dataset](#dataset)
-9. [Usage](#usage)
+2. [Installation](#installation)
+3. [Dataset](#dataset)
+4. [Usage](#usage)
     - [Inference](#inference)
     - [Metrics Calculation](#metrics-calculation)
     - [Data Visualization](#data-visualization)
+5. [Key Features](#key-features)
+6. [Methodology](#methodology)
+7. [Models Evaluated](#models-evaluated)
+8. [Metrics](#metrics)
+9. [Requirements](#requirements)
 10. [Results](#results)
 11. [References](#references)
 
 ## Introduction
 
 Semantic segmentation of food items in images is a challenging task due to the high variability and overlapping nature of food items. This project explores the use of zero-shot object detection models combined with advanced segmentation techniques to perform food segmentation without any additional model training.
-
-## Key Features
-
-- **Zero-Shot Object Detection**: Utilizes pre-trained models without fine-tuning.
-- **Mask Combination Method**: Combines segmentation masks based on the most frequent food per pixel, resolving ties with the highest confidence detection.
-- **Polygon Refinement**: Enhances segmentation masks with polygon refinement for better accuracy.
-- **Benchmarking**: Evaluated on the FoodSeg103 dataset.
-
-## Methodology
-
-The proposed method involves the following steps:
-
-1. **Object Detection**: Use an out-of-the-box zero-shot object detection model to detect food items in images.
-2. **Segmentation**: Pass the resulting bounding boxes to the Segment Anything Model (SAM) to obtain segmentation masks.
-3. **Polygon Refinement**: Refine the segmentation masks using polygon-based methods.
-4. **Mask Combination**: Combine all segmentation masks using the proposed method.
-
-
-## Models Evaluated
-
-The object detection models tested in this study include:
-
-- **OWL-ViT**: Base and Large versions.
-- **OWLv2**: Base and Large versions.
-- **OmDet**
-
-Initial tests were conducted with Grounding DINO (base and tiny), but this model class was not well suited for this project specific framework.
-
-## Metrics
-
-The models were assessed based on the following metrics:
-
-- **mIoU**: Mean Intersection over Union over each class.
-- **mACC**: Mean accuracy over all classes.
-- **aAcc**: Overall pixel accuracy.
-
-## Requirements
-
-- **Operating System**: Linux
-- **GPU**: CUDA-compatible GPU
-- **Python Version**: Python 3.7 or higher
-- **Package Manager**: Conda
 
 ## Installation
 
@@ -183,6 +141,49 @@ Visualize the data and results:
 ```bash
 python data_visualization.py
 ```
+
+## Key Features
+
+- **Zero-Shot Object Detection**: Utilizes pre-trained models without fine-tuning.
+- **Mask Combination Method**: Combines segmentation masks based on the most frequent food per pixel, resolving ties with the highest confidence detection.
+- **Polygon Refinement**: Enhances segmentation masks with polygon refinement for better accuracy.
+- **Benchmarking**: Evaluated on the FoodSeg103 dataset.
+
+## Methodology
+
+The proposed method involves the following steps:
+
+1. **Object Detection**: Use an out-of-the-box zero-shot object detection model to detect food items in images.
+2. **Segmentation**: Pass the resulting bounding boxes to the Segment Anything Model (SAM) to obtain segmentation masks.
+3. **Polygon Refinement**: Refine the segmentation masks using polygon-based methods.
+4. **Mask Combination**: Combine all segmentation masks using the proposed method.
+
+
+## Models Evaluated
+
+The object detection models tested in this study include:
+
+- **OWL-ViT**: Base and Large versions.
+- **OWLv2**: Base and Large versions.
+- **OmDet**
+
+Initial tests were conducted with Grounding DINO (base and tiny), but this model class was not well suited for this project specific framework.
+
+## Metrics
+
+The models were assessed based on the following metrics:
+
+- **mIoU**: Mean Intersection over Union over each class.
+- **mACC**: Mean accuracy over all classes.
+- **aAcc**: Overall pixel accuracy.
+
+## Requirements
+
+- **Operating System**: Linux
+- **GPU**: CUDA-compatible GPU
+- **Python Version**: Python 3.7 or higher
+- **Package Manager**: Conda
+
 
 ## Results
 
