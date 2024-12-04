@@ -1,0 +1,15 @@
+name: dino
+channels:
+  - conda-forge
+dependencies:
+  - pytorch
+  - pytorch-cuda=12.1
+  - torchaudio
+  - torchvision
+  - git
+  - opencv
+  - plotly
+  - pandas
+  - matplotlib
+  - timm
+prefix: /home/car9152/.conda/envs/dino
