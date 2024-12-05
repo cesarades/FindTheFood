@@ -28,17 +28,17 @@ Semantic segmentation of food items in images is a challenging task due to the h
 ## Installation
 
 1. **Clone the Repository**
-
+ 
    ```bash
-   git clone https://github.com/yourusername/find-the-food.git
-   cd find-the-food
+   git clone https://github.com/cesarades/FindTheFood.git
+   cd FindTheFood
    ```
-
+ 
 2. **Create and Activate Conda Environment**
-
+ 
    ```bash
    conda env create -f environment.yml
-   conda activate find-the-food
+   conda activate findthefood
    ```
 
    This will install all required packages as specified in the `environment.yml` file.
