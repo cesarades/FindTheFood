@@ -5,11 +5,11 @@ channels:
   - conda-forge
 dependencies:
   - pytorch
-  - pytorch-cuda=12.1
   - torchaudio
   - torchvision
-  - conda-forge::transformers
+  - transformers
   - pillow
-  - conda-forge::opencv
   - scipy
-  - plotly::plotly
+  - plotly
+  - pip:
+    - opencv-python
