@@ -23,7 +23,7 @@ This project is an empirical analysis of zero-shot object detection models for f
 
 ## Introduction
 
-Semantic segmentation of food items in images is a challenging task due to the high variability and overlapping nature of food items. This project explores the use of zero-shot object detection models combined with advanced segmentation techniques to perform food segmentation without any additional model training.
+Semantic segmentation of food items in images is a challenging task due to the high variability and overlapping nature of food items. This project explores the use of zero-shot object detection models combined with advanced segmentation techniques to perform food segmentation without any additional model training. The full [paper](/Find_The_Food.pdf) goes more in depth with the processes and experiments.
 
 ## Installation
 
